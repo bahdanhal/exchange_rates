@@ -7,26 +7,16 @@ function ratesUpdate(){
         return;
     }
     let request = new XMLHttpRequest();
-    let link = 'request.php?query=' + currency + '?ondate=' + date
-    request.open('GET', link, true)
-    request.send()
-
-    request.onreadystatechange = function () {
-        if (request.readyState === 4) {
-            if (request.status == 200 && request.status < 300) {
-                try {
-                    response = JSON.parse(request.responseText)
-                } catch (e) {
-                    alert("error")
-                }
-                exchange_rate = response.Cur_OfficialRate
-                document.getElementById("exchange_rate").innerHTML = exchange_rate
-            }
-            else
-                alert("error")
-        }
-    }
-    //console.log(currencies[document.getElementById("rates_currency").value])
+    let link = 'https://www.nbrb.by/api/exrates/rates/' + currency + '?ondate=' + date
+    $.getJSON(link)
+    .done(function (data) {
+        $.each(data, function (key, item) {
+            exchange_rate = data.Cur_OfficialRate
+            document.getElementById("exchange_rate").innerHTML = exchange_rate
+        });
+    }).error(function (err) {
+        alert('error');
+    });
 }
 
 
