@@ -13,7 +13,7 @@ function ratesUpdate(){
         return;
     }
     let request = new XMLHttpRequest();
-    let link = 'https://www.nbrb.by/api/exrates/rates/' + currency + '?ondate=' + date
+    let link = '/rate&currency=' + currency + '&ondate=' + date
     request.open('GET', link, true);
     request.onload = function() {
         if (request.status >= 200 && request.status < 400) {

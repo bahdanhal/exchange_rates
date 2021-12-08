@@ -1,0 +1,17 @@
+{
+    "name": "user-pc/htdocs2",
+    "authors": [
+        {
+            "name": "bahdan.hal",
+            "email": "bahdan.hal@hotmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Controllers\\": "controllers",
+            "Models\\": "models",
+            "App\\": "app"
+        }
+    }
+}
